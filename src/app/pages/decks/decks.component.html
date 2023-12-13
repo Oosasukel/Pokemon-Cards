@@ -1,0 +1,49 @@
+<div class="flex justify-between items-center mb-4">
+  <h1 class="md:text-2xl">Baralhos: {{ decks.length }}</h1>
+  <button mat-stroked-button color="primary" routerLink="/novo">
+    Novo Baralho
+  </button>
+</div>
+
+<div
+  class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 justify-items-center gap-8"
+>
+  <mat-card *ngFor="let deck of decks" class="w-72 group">
+    <mat-card-header>
+      <mat-card-title
+        >{{ deck.name }}
+        <span class="font-normal text-base text-gray-500"
+          >({{ deck.cards.length }} cartas)</span
+        ></mat-card-title
+      >
+      <mat-card-subtitle
+        >{{ deck.pokemonCount }}
+        {{ deck.pokemonCount === 1 ? "pokemon" : "pokemons" }},
+        {{ deck.trainerCount }}
+        {{ deck.trainerCount === 1 ? "treinador" : "treinadores" }},
+        {{ deck.energyCount }}
+        {{ deck.energyCount === 1 ? "energia" : "energias" }}</mat-card-subtitle
+      >
+      <mat-card-subtitle>{{ deck.uniqueTypes.length }} cores</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content class="h-60 relative">
+      <app-deck-preview [cards]="deck.cards"></app-deck-preview>
+    </mat-card-content>
+    <mat-card-actions class="flex gap-4">
+      <button
+        mat-stroked-button
+        color="primary"
+        routerLink="/baralhos/{{ deck.id }}"
+      >
+        Detalhes
+      </button>
+      <button
+        mat-stroked-button
+        color="warn"
+        (click)="openDialogDeleteConfirmation(deck.id!)"
+      >
+        Excluir
+      </button>
+    </mat-card-actions>
+  </mat-card>
+</div>

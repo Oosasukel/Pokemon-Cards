@@ -1,0 +1,10 @@
+<h1 mat-dialog-title>Tem certeza?</h1>
+<mat-dialog-content>
+  <p>Você não poderá desfazer</p>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-button (click)="onCancel()">Cancelar</button>
+  <button color="warn" mat-button (click)="onConfirm()" cdkFocusInitial>
+    Excluir
+  </button>
+</mat-dialog-actions>
