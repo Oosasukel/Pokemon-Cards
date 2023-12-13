@@ -23,7 +23,13 @@ mat-paginator {
 
 @media (min-width: 768px) {
   .poke-card {
+    width: 100%;
     height: min-content;
+  }
+
+  .poke-card img {
+    width: 100%;
+    height: unset;
   }
 }
 
